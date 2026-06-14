@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Data Hub - Simple</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>The Data Hub API Dashboard</h1>
+    
+    <div class="container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2 id="form-title">Create New Post</h2>
+            <form id="post-form">
+                <input type="hidden" id="post-id">
+                
+                <div>
+                    <label>Title:</label><br>
+                    <input type="text" id="title" required>
+                </div>
+                <br>
+                
+                <div>
+                    <label>Content:</label><br>
+                    <textarea id="content" rows="4" required></textarea>
+                </div>
+                <br>
+
+                <div>
+                    <label>Author:</label><br>
+                    <input type="text" id="author" required>
+                </div>
+                <br>
+
+                <button type="submit" id="submit-btn">Submit</button>
+                <button type="button" id="cancel-btn" style="display: none;">Cancel</button>
+            </form>
+            <p id="message"></p>
+        </div>
+
+        <!-- Data List Section -->
+        <div class="list-section">
+            <h2>All Posts</h2>
+            <button id="refresh-btn">Refresh List</button>
+            <div id="posts-container">
+                <!-- Posts will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
