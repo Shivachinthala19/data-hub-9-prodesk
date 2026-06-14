@@ -24,7 +24,7 @@ function fetchPosts() {
                 const div = document.createElement('div');
                 div.className = 'post-item';
                 div.innerHTML = `
-                    <h3>${post.title} (ID: ${post.id})</h3>
+                    <h3>Title: ${post.title}</h3>
                     <p><strong>Author:</strong> ${post.author}</p>
                     <p>${post.content}</p>
                     <div class="actions">
@@ -56,12 +56,12 @@ function handleSubmit(event) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(() => {
-            showMessage('Post updated successfully!');
-            resetForm();
-            fetchPosts();
-        });
+            .then(res => res.json())
+            .then(() => {
+                showMessage('Post updated successfully!');
+                resetForm();
+                fetchPosts();
+            });
     } else {
         // POST request
         fetch(API_URL, {
@@ -69,12 +69,12 @@ function handleSubmit(event) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(() => {
-            showMessage('Post created successfully!');
-            resetForm();
-            fetchPosts();
-        });
+            .then(res => res.json())
+            .then(() => {
+                showMessage('Post created successfully!');
+                resetForm();
+                fetchPosts();
+            });
     }
 }
 
@@ -87,11 +87,11 @@ function editPost(id) {
             document.getElementById('content').value = post.content;
             document.getElementById('author').value = post.author;
             document.getElementById('post-id').value = post.id;
-            
+
             document.getElementById('form-title').innerText = 'Edit Post';
             document.getElementById('submit-btn').innerText = 'Update';
             document.getElementById('cancel-btn').style.display = 'inline-block';
-            
+
             isEditing = true;
         });
 }
@@ -102,10 +102,10 @@ function deletePost(id) {
         fetch(`${API_URL}/${id}`, {
             method: 'DELETE'
         })
-        .then(() => {
-            showMessage('Post deleted successfully!');
-            fetchPosts();
-        });
+            .then(() => {
+                showMessage('Post deleted successfully!');
+                fetchPosts();
+            });
     }
 }
 
