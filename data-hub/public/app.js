@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/posts';
+const API_URL = '/posts';
 
 document.addEventListener('DOMContentLoaded', fetchPosts);
 document.getElementById('refresh-btn').addEventListener('click', fetchPosts);
@@ -61,6 +61,10 @@ function handleSubmit(event) {
                 showMessage('Post updated successfully!');
                 resetForm();
                 fetchPosts();
+            })
+            .catch(err => {
+                console.error('Error updating post:', err);
+                showMessage('Failed to update post. Is the server running?');
             });
     } else {
         // POST request
@@ -74,6 +78,10 @@ function handleSubmit(event) {
                 showMessage('Post created successfully!');
                 resetForm();
                 fetchPosts();
+            })
+            .catch(err => {
+                console.error('Error creating post:', err);
+                showMessage('Failed to create post. Is the server running?');
             });
     }
 }
@@ -93,6 +101,10 @@ function editPost(id) {
             document.getElementById('cancel-btn').style.display = 'inline-block';
 
             isEditing = true;
+        })
+        .catch(err => {
+            console.error('Error fetching post for edit:', err);
+            showMessage('Failed to fetch post details. Is the server running?');
         });
 }
 
@@ -105,6 +117,10 @@ function deletePost(id) {
             .then(() => {
                 showMessage('Post deleted successfully!');
                 fetchPosts();
+            })
+            .catch(err => {
+                console.error('Error deleting post:', err);
+                showMessage('Failed to delete post. Is the server running?');
             });
     }
 }
